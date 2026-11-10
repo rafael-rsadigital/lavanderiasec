@@ -166,14 +166,15 @@ footer p { font-size: 24px !important; }
   header nav { width: 100%; gap: 8px 12px !important; font-size: 12px !important; }
   header nav a:last-child { display: none !important; }
 
-  #inicio { padding: 22px 16px 28px !important; }
-  #inicio > div { gap: 22px !important; }
-  #inicio > div > div:first-child { gap: 13px !important; }
-  #inicio .hero-local-context p { font-size: 10px !important; }
-  #inicio .hero-local-context p + p { font-size: 9px !important; }
-  #inicio h1 { font-size: clamp(40px, 10.5vw, 54px) !important; line-height: .98 !important; }
-  #inicio h1 + p { font-size: 20px !important; }
-  #inicio p { font-size: 14px !important; }
+  #inicio { padding: 38px 18px 52px !important; }
+  #inicio > div { gap: 30px !important; }
+  #inicio > div > div:first-child { gap: 21px !important; }
+  #inicio .hero-local-context { gap: 6px !important; margin-bottom: 0 !important; }
+  #inicio .hero-local-context p { font-size: 11px !important; line-height: 1.55 !important; }
+  #inicio .hero-local-context p + p { font-size: 10px !important; }
+  #inicio h1 { font-size: clamp(42px, 11vw, 58px) !important; line-height: 1.02 !important; }
+  #inicio h1 + p { font-size: 22px !important; line-height: 1.18 !important; }
+  #inicio p { font-size: 15px !important; line-height: 1.55 !important; }
   #inicio > div > div:last-child { gap: 10px !important; }
   #inicio > div > div:last-child > div { padding: 14px !important; border-radius: 16px !important; }
   #inicio > div > div:last-child > div > span:first-child { font-size: 34px !important; }
@@ -252,6 +253,11 @@ footer p { font-size: 24px !important; }
   font-weight: 700;
   letter-spacing: 1.5px;
   text-align: center;
+  transition: background-color .35s ease, color .35s ease;
+}
+.hero-status.is-delivery {
+  background: #FF8A1F;
+  color: #0B2A5B;
 }
 #hero-status-message { display: inline-block; white-space: nowrap; }
 #hero-status-message.is-leaving { animation: heroStatusOut .42s ease forwards; }
@@ -795,6 +801,7 @@ footer p { font-size: 24px !important; }
     window.setTimeout(() => {
       current = (current + 1) % messages.length;
       message.textContent = messages[current];
+      message.parentElement.classList.toggle('is-delivery', current === 1);
       message.classList.remove('is-leaving');
       message.classList.add('is-entering');
     }, 420);
