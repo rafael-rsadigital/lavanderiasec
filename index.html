@@ -65,6 +65,11 @@ header > div { padding-top: 12px !important; padding-bottom: 12px !important; ga
 header a span:first-child { font-size: 34px !important; }
 header nav { gap: 16px !important; font-size: 14px !important; }
 
+/* Identificação local discreta acima dos selos do Hero */
+#inicio .hero-local-context { display: flex; flex-direction: column; gap: 3px; margin-bottom: -6px; text-align: left; }
+#inicio .hero-local-context p { margin: 0; font-family: Poppins, system-ui, sans-serif; font-size: 12px !important; line-height: 1.45 !important; font-weight: 600; letter-spacing: .35px; color: rgba(255,255,255,.92); }
+#inicio .hero-local-context p + p { font-size: 11px !important; font-weight: 500; letter-spacing: .25px; color: rgba(255,255,255,.78); }
+
 /* Hero: conteúdo principal dimensionado para caber na primeira tela */
 #inicio {
   min-height: calc(100svh - 70px);
@@ -179,6 +184,10 @@ footer p { font-size: 24px !important; }
 <section id="inicio" style="background: #0F6AE0; color: #FFFFFF; padding: 48px 24px 88px">
 <div style="max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
 <div style="flex: 1 1 460px; display: flex; flex-direction: column; gap: 22px">
+<div class="hero-local-context" aria-label="Localização da lavanderia">
+<p>Lavanderia self service 24 horas em Arapongas – PR</p>
+<p>Vila Araponguinha · Posto Catuaí (Shell)</p>
+</div>
 <div style="display: flex; flex-wrap: wrap; gap: 10px">
 <span style="background: #FFD21F; color: #0B2A5B; font-weight: 700; font-size: 13px; letter-spacing: 1.5px; padding: 7px 16px; border-radius: 999px">ABERTO 24 HORAS · TODO DIA</span>
 <a href="#delivery" style="background: #FF8A1F; color: #0B2A5B; text-decoration: none; font-weight: 700; font-size: 13px; letter-spacing: 1.5px; padding: 7px 16px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0B2A5B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h13v10H1z"></path><path d="M14 9h4l3 3v4h-7z"></path><circle cx="5.5" cy="17.5" r="2"></circle><circle cx="17.5" cy="17.5" r="2"></circle></svg>TEM DELIVERY!</a>
