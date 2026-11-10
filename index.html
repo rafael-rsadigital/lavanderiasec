@@ -175,9 +175,11 @@ footer p { font-size: 24px !important; }
   #inicio h1 { font-size: clamp(42px, 11vw, 58px) !important; line-height: 1.02 !important; }
   #inicio h1 + p { font-size: 22px !important; line-height: 1.18 !important; }
   #inicio p { font-size: 15px !important; line-height: 1.55 !important; }
-  #inicio > div > div:last-child { gap: 10px !important; }
-  #inicio > div > div:last-child > div { padding: 14px !important; border-radius: 16px !important; }
-  #inicio > div > div:last-child > div > span:first-child { font-size: 34px !important; }
+  #inicio > div > div:last-child { gap: 8px !important; }
+  #inicio > div > div:last-child > div { padding: 11px 10px !important; border-radius: 15px !important; gap: 3px !important; }
+  #inicio > div > div:last-child > div > span:first-child { font-size: 30px !important; line-height: 1 !important; }
+  #inicio > div > div:last-child > div:nth-child(2) > span:first-child { font-size: 25px !important; white-space: nowrap; }
+  #inicio > div > div:last-child > div > span:last-child { font-size: 12px !important; line-height: 1.25 !important; }
   #inicio a[href="#como-usar"], #inicio a[href="#onde"] {
     min-height: 42px !important; padding: 10px 16px !important; font-size: 14px !important;
   }
@@ -805,7 +807,7 @@ footer p { font-size: 24px !important; }
       message.classList.remove('is-leaving');
       message.classList.add('is-entering');
     }, 420);
-  }, 4200);
+  }, 3200);
 })();
 </script>
 
