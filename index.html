@@ -234,6 +234,41 @@ footer p { font-size: 24px !important; }
 
 </style>
 
+
+<style id="hero-status-rotation">
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  min-width: 260px;
+  min-height: 36px;
+  padding: 7px 16px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #FFD21F;
+  color: #0B2A5B;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+#hero-status-message { display: inline-block; white-space: nowrap; }
+#hero-status-message.is-leaving { animation: heroStatusOut .42s ease forwards; }
+#hero-status-message.is-entering { animation: heroStatusIn .42s ease both; }
+@keyframes heroStatusOut {
+  to { opacity: 0; transform: translateX(-24px); }
+}
+@keyframes heroStatusIn {
+  from { opacity: 0; transform: translateX(24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  #hero-status-message.is-leaving,
+  #hero-status-message.is-entering { animation: none; }
+}
+</style>
+
 </head>
 <body>
 <div style="width: 100%; background: #FFFFFF; color: #0B2A5B">
@@ -264,9 +299,8 @@ footer p { font-size: 24px !important; }
 <p>Lavanderia self service 24 horas em Arapongas – PR</p>
 <p>Vila Araponguinha · Posto Catuaí (Shell)</p>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 10px">
-<span style="background: #FFD21F; color: #0B2A5B; font-weight: 700; font-size: 13px; letter-spacing: 1.5px; padding: 7px 16px; border-radius: 999px">ABERTO 24 HORAS · TODO DIA</span>
-<a href="#delivery" style="background: #FF8A1F; color: #0B2A5B; text-decoration: none; font-weight: 700; font-size: 13px; letter-spacing: 1.5px; padding: 7px 16px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0B2A5B" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h13v10H1z"></path><path d="M14 9h4l3 3v4h-7z"></path><circle cx="5.5" cy="17.5" r="2"></circle><circle cx="17.5" cy="17.5" r="2"></circle></svg>TEM DELIVERY!</a>
+<div class="hero-status" aria-label="Informações da lavanderia">
+<span id="hero-status-message">ABERTO 24 HORAS · TODO DIA</span>
 </div>
 <h1 style="margin: 0; font-size: clamp(56px, 9vw, 116px); line-height: 0.95; letter-spacing: 0.5px">Lavanderia SEC<span style="color: #FFD21F">+</span><br><span style="color: #FFD21F">Aqui cabe</span> <span role="img" aria-label="mais" style="position: relative; display: inline-block; width: 1.15em; height: 0.72em; vertical-align: baseline; margin-left: 0.05em"><span style="position: absolute; left: 50%; top: 50%; width: 1.15em; height: 0.3em; background: #FFD21F; border-radius: 0.05em; transform: translate(-50%, -50%)"></span><span style="position: absolute; left: 50%; top: 50%; width: 0.3em; height: 1.15em; background: #FFD21F; border-radius: 0.05em; transform: translate(-50%, -50%)"></span></span></h1>
 <p style="margin: 0; font-family: Anton, sans-serif; font-size: clamp(28px, 3vw, 38px); line-height: 1.1; letter-spacing: 1px">MÁQUINA GIGANTE DE 20 KG. ABERTA 24H.</p>
@@ -745,5 +779,28 @@ footer p { font-size: 24px !important; }
   </svg>
 </a>
 </div>
+
+<script>
+(() => {
+  const message = document.getElementById('hero-status-message');
+  if (!message || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const messages = ['ABERTO 24 HORAS · TODO DIA', 'TEM DELIVERY'];
+  let current = 0;
+
+  window.setInterval(() => {
+    message.classList.remove('is-entering');
+    message.classList.add('is-leaving');
+
+    window.setTimeout(() => {
+      current = (current + 1) % messages.length;
+      message.textContent = messages[current];
+      message.classList.remove('is-leaving');
+      message.classList.add('is-entering');
+    }, 420);
+  }, 4200);
+})();
+</script>
+
 </body>
 </html>
